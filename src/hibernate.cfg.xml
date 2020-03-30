@@ -25,6 +25,7 @@
 		<!-- Entity classes -->
 		
 	<mapping class="hibernateFirst.Employee" />
+	<mapping class="hibernateFirst.Book"/>
 		
 	 
 	 </session-factory>
