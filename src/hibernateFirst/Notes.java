@@ -121,5 +121,36 @@ is reduced.
   5.Criteria (used for read queries)
   
   
+  to fix the time zone exception use => SET GLOBAL time_zone = '+3:00'; in terminal
+  after starting mysql using mysql -u root -p command then type password 
+  
+  
+update():
+-update based on the id(primary key) ; 
+update based on name,sal is not possible.
+-updates only single row. multiple row updation is not possible.
+- updates every column ; particular column updation is not possible.  
+  
+  
+delete():
+-delete based on the id  
+delete based on name,sal is not possible.
+-deletes only single row. multiple row deletion is not possible.
+-
+  
+  
+get()/load():
+-reads based on the id
+read based on name,sal is not possible.
+-reads only single row. multiple row retrival is not possible.
+- reads every column , retriving particular column is not possible
+
+Solution:
+Use HQL 
+Hiberante Query Language.
+HQL is independent of the database.
+using HQL we can execute any query.
+Need Query Object
+  
  */
 }

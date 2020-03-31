@@ -14,18 +14,24 @@
 		
 		<!-- hib config -->
 		<!-- SQL dialect -->
+		<!-- dialect tells hibernate which database to use and dialect is used for query 
+		generation, if we need to change the database from mysql to oracle we would
+		need to change the value of dialect, also change wherever there is mysql 
+		related code -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-		<!-- Show all executed SQL to stdout -->
+		<!-- Show all executed SQL to stdout , display queries created by hibernate-->
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">create</property>
-
+		<!-- <property name="hbm2ddl.auto">create</property> -->
+		<property name="hbm2ddl.auto">update</property>
 		<!-- Entity classes -->
 		
 	<mapping class="hibernateFirst.Employee" />
 	<mapping class="hibernateFirst.Book"/>
+	<mapping class="hibernatePractice.Student"/>
+	<mapping class="hibernatePractice.Novel"/>
 		
 	 
 	 </session-factory>

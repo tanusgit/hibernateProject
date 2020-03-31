@@ -1,4 +1,4 @@
-package hibernateFirst;
+package hibernatePractice;
 
 import javax.persistence.Access;
 import javax.persistence.Column;
@@ -19,7 +19,7 @@ import org.hibernate.annotations.AccessType;
 
 @Entity
 @Table(name = "BookLists")
-public class Book {
+public class Novel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	//we have to put the @Id annotation somewhere above the instance variable otherwise
 	//it throws exception
@@ -33,7 +33,7 @@ public class Book {
 	@Column(name = "Bookprice", nullable = false, length = 30, unique = true)
 	Integer price;
 
-	public Book(String name, int price) {
+	public Novel(String name, int price) {
 		super();
 		this.name = name;
 		this.price = price;

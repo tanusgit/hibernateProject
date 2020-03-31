@@ -1,4 +1,4 @@
-package hibernateFirst;
+package hibernatePractice;
 
 
 import javax.annotation.Generated;
@@ -12,8 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EmployeeDetails")
-public class Employee {
+@Table(name = "Student")
+public class Student {
 	//@id is used for the primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // value for id is auto generated
@@ -28,7 +28,7 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return "Employee [Id=" + Id + ", userName=" + userName
+		return "Student [Id=" + Id + ", userName=" + userName
 				+ ", usersalary=" + usersalary + "]";
 	}
 
@@ -43,26 +43,26 @@ public class Employee {
 	public Integer getUsersalary() {
 		return usersalary;
 	}
-	public void setUsersalary(Integer usersalary) {
+	public void setsalary(Integer usersalary) {
 		this.usersalary = usersalary;
 	}
-	public String getUserName() {
+	public String getName() {
 		return userName;
 	}
 	
-	public Employee(int id, String userName) {
+	public Student(int id, String userName) {
 		super();
 		Id = id;
 		this.userName = userName;
 	}
-	public void setUserName(String userName) {
+	public void setName(String userName) {
 		this.userName = userName;
 	}
 
-	public Employee() {
+	public Student() {
 		super();
 	}
-	public Employee(int id, String userName, int usersalary) {
+	public Student(int id, String userName, int usersalary) {
 		super();
 		Id = id;
 		this.userName = userName;
