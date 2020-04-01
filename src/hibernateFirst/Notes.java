@@ -145,12 +145,59 @@ read based on name,sal is not possible.
 -reads only single row. multiple row retrival is not possible.
 - reads every column , retriving particular column is not possible
 
-Solution:
-Use HQL 
-Hiberante Query Language.
+Solution:  Use HQL 
+
+Hibernate Query Language.
 HQL is independent of the database.
 using HQL we can execute any query.
-Need Query Object
+Need Query Object for HQL
+
+ 
+SQL : column nams + table name
+HQL : instance variable + class name (replace column name with i.v. + replace table with class name)
   
+@Entity
+@Table(name = "EmployeeDetails")
+public class Employee {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userId")
+	private int Id;
+
+	@Column(name = "name", nullable = false, length = 30, unique = true)
+	private String userName;
+
+	@Column(name = "salaryInfo", nullable = true)
+	private Integer usersalary;
+	
+}
+
+SQL: SELECT * FROM EmployeeDetails;
+HQL : From Employee
+
+SQL: SELECT userId,name FROM EmployeeDetails
+HQL: SELECT Id,userName FROM Employee
+
+
+SQL:  SELECT name,salaryInfo FROM EmployeeDetails WHERE userId=5000
+HQL:  SELECT userName,usersalary FROM Employee WHERE Id=5000
+
+SQL : Update EmployeeDetails set myName ='tet12222' where userId=5000
+HQL : Update Employee set userName ='tet12222' where Id=5000
+
+
+
+ Steps:
+1.create session factory
+2.create session
+3.create query obj using hql 
+Query  q = session.createQuery("<any hql>");
+
+4.
+insert/update/delete ----> need transaction object + q.executeUpdate()
+select ----> 
+     1.single row    : q.uniqueResult()
+     2.multiple row :  q.list()
  */
 }

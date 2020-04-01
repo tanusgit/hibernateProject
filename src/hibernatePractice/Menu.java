@@ -20,6 +20,7 @@ public class Menu {
 		System.out.println("type 2 for update");
 		System.out.println("type 3 for delete");
 		System.out.println("type 4 for read all the data from table");
+		System.out.println("exit");
 		int input = m.nextInt();
 		if(input == 1) {
 			insert();
@@ -62,8 +63,6 @@ public class Menu {
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session s = sf.openSession();
 		
-		System.out.println("enter name");
-		String name = m.next();
 		System.out.println("enter id");
 		int id = m.nextInt();
 		
@@ -109,6 +108,7 @@ public class Menu {
 		Student m1 = new Student();
 		m1.setName(name);
 		m1.setId(id);	
+		m1.setsalary(1000);
 		
 
 		Transaction transaction = s.getTransaction();
