@@ -186,7 +186,7 @@ HQL:  SELECT userName,usersalary FROM Employee WHERE Id=5000
 SQL : Update EmployeeDetails set myName ='tet12222' where userId=5000
 HQL : Update Employee set userName ='tet12222' where Id=5000
 
-
+in HQL we use class name and instance variables name instead of table, column name
 
  Steps:
 1.create session factory
