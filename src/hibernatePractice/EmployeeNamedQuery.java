@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "EmployeeDetails")
-public class Employee {
+public class EmployeeNamedQuery {
 	//@id is used for the primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // value for id is auto generated
@@ -50,7 +50,7 @@ public class Employee {
 		return userName;
 	}
 	
-	public Employee(int id, String userName) {
+	public EmployeeNamedQuery(int id, String userName) {
 		super();
 		Id = id;
 		this.userName = userName;
@@ -59,10 +59,10 @@ public class Employee {
 		this.userName = userName;
 	}
 
-	public Employee() {
+	public EmployeeNamedQuery() {
 		super();
 	}
-	public Employee(int id, String userName, int usersalary) {
+	public EmployeeNamedQuery(int id, String userName, int usersalary) {
 		super();
 		Id = id;
 		this.userName = userName;

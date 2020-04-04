@@ -13,7 +13,7 @@ public class SomQeueries {
 public static void main(String[] args) {
 	//print2000Salary();
 	Session s = HibernateUtil.getSessionFactory().openSession();
-	Criteria cr = s.createCriteria(Employee.class);
+	Criteria cr = s.createCriteria(EmployeeNamedQuery.class);
 	cr.add(Restrictions.eq("salary", 2000));
 	List results = cr.list();
 	for(Object n : results) {
@@ -23,7 +23,7 @@ public static void main(String[] args) {
 
 public static void print2000Salary() {
 	Session s = HibernateUtil.getSessionFactory().openSession();
-	Criteria cr = s.createCriteria(Employee.class);
+	Criteria cr = s.createCriteria(EmployeeNamedQuery.class);
 	cr.add(Restrictions.eq("salary", 2000));
 	List results = cr.list();
 	for(Object n : results) {
