@@ -145,12 +145,227 @@ public static void main(String[] args) {
 
 		// To get sum of a property.
 		//cr.setProjection(Projections.sum("usersalary"));
+		 
+		 
+		 //name = 'krishna' or name is null 
+		  * 
+		  cr.add(Restrictions.eqOrIsNull("userName","Tanu")); 
 		
 		List res = cr.list();
 		for (Object n : res) {
 			System.out.println(n);
 		}
 		s.close();
+		
+		
+		---------------------------------------------------
+		import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+
+//orderby ,username, minsal, max sal are optional
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		String name="";
+		String salOrderBy = "";
+		String userNameLike="testuser7";
+		int minSal=5575;
+		int maxSal=6000;
+
+		Criteria empCriteria = session.createCriteria(Employee.class);
+
+		if("asc".equals(salOrderBy) ){
+			empCriteria.addOrder(Order.asc("usersalary"));
+		}else if("desc".equals(salOrderBy) ){
+			empCriteria.addOrder(Order.desc("usersalary"));
+		}
+		
+		if(userNameLike!=null  && !userNameLike.equals("") ){
+			empCriteria.add(Restrictions.like("userName", "%"+userNameLike+"%"));
+		}
+		
+		if(name!=null  && !name.equals("") ){
+			empCriteria.add(Restrictions.eq("userName", name));
+		}
+		
+		if (minSal != 0 && maxSal!=0) {
+			empCriteria.add(Restrictions.between("usersalary", minSal, maxSal));
+		}
+		List<Employee> employees = empCriteria.list();
+		for(Employee e  : employees){
+			System.out.println(e);
+		}
+		session.close();
+	}
+	
+	---------------------------------
+	empCriteria.addOrder(Order.asc("usersalary")); 
+	//name = 'krishna' empCriteria.add(Restrictions.eq("userName", "krishna"));
+	 *  // name like '%kumar%' 
+	 *  empCriteria.add(Restrictions.like("userName", "kumar")); 
+	 *  // salaryInfo between (5000, 10000) 
+	 *  empCriteria.add(Restrictions.between("usersalary",5000 , 10000));
+	 *   //name = 'krishna' or name is null 
+	 *   empCriteria.add(Restrictions.eqOrIsNull("userName","krishna")); 
+	 *   //Id = 2000 
+	 *   empCriteria.add(Restrictions.idEq("2000")); 
+	 *   List<Employee> list = empCriteria.list(); 
+	 *   System.out.println(list.size()); 
+	 *   for (Employee e : list) 
+	 *   { System.out.println(e); } 
+	 *   s.close(); } 
+	 *   
+	 *   
+	 *   //salaryInfo > 10000
+		empCriteria.add(Restrictions.gt("usersalary", 10000));
+		
+		//salaryInfo >= 10000
+		empCriteria.add(Restrictions.ge("usersalary", 10000));
+		
+		//salaryInfo < 10000
+		empCriteria.add(Restrictions.lt("usersalary", 10000));
+		
+		//salaryInfo <= 10000
+		empCriteria.add(Restrictions.le("usersalary", 10000));
+		
+		//Join conditions 
+		//name = 'krishna'
+		Criterion nameCondition = Restrictions.like("userName","krishna");
+
+		//salaryInfo < 5000
+		Criterion salaryCondition = Restrictions.lt("usersalary", 5000);
+		
+		//name = 'krishna' or  salaryInfo < 5000
+		LogicalExpression joinOr = Restrictions.or(salaryCondition, nameCondition);
+		empCriteria.add( joinOr );
+
+		//name = 'krishna' and  salaryInfo < 5000
+		LogicalExpression joinAnd = Restrictions.and(salaryCondition, nameCondition);
+		empCriteria.add( joinAnd );
+
+ //Projections : meant to include selected columns in the response
+		//get paricular column
+		empCriteria.setProjection(Projections.property("userName"));  
+		
+		empCriteria.add(Restrictions.in("userName", 
+				Arrays.asList("krishna", "ram", "ramesh")))
+	    .add(Restrictions.lt("usersalary", 5000))
+	    .add(Restrictions.gt("usersalary", 10000))
+	    .add(Restrictions.eqOrIsNull("userName", "krishna"))
+	    .add(Restrictions.idEq("2000"))
+	    .list();
+	    -------------------------------------------------------------
+	    
+	    
+	    
+	    
+	    -------------------------------------------------------------
+	    public static void main(String[] args) {
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		Criteria empCriteria = s.createCriteria(Employee.class);
+
+		//order by salaryinfo
+		empCriteria.addOrder(Order.asc("usersalary"));
+
+		//name = 'krishna'
+		empCriteria.add(Restrictions.eq("userName", "krishna"));
+
+		// name like '%kumar%'
+		empCriteria.add(Restrictions.like("userName", "%kumar%"));
+
+		// salaryInfo between (5000, 10000)
+		empCriteria.add(Restrictions.between("usersalary", 5000, 10000));
+
+		// name = 'krishna' or name is null
+		empCriteria.add(Restrictions.eqOrIsNull("userName", "krishna"));
+
+		// Id = 2000
+		empCriteria.add(Restrictions.idEq("2000"));
+
+		// name = 'krishna' or name = 'ram' or name = 'ramesh'
+		empCriteria.add(Restrictions.in("userName", 
+				Arrays.asList("krishna", "ram", "ramesh")));
+		
+		//name = ''
+		empCriteria.add(Restrictions.isEmpty("userName"));
+		
+		//name != ''
+		empCriteria.add(Restrictions.isNotEmpty("userName"));
+
+		// name is NULL
+		empCriteria.add(Restrictions.isNull("userName"));
+		
+		//name is NOT NULL
+		empCriteria.add(Restrictions.isNotNull("userName"));
+		
+		//salaryInfo > 10000
+		empCriteria.add(Restrictions.gt("usersalary", 10000));
+		
+		//salaryInfo >= 10000
+		empCriteria.add(Restrictions.ge("usersalary", 10000));
+		
+		//salaryInfo < 10000
+		empCriteria.add(Restrictions.lt("usersalary", 10000));
+		
+		//salaryInfo <= 10000
+		empCriteria.add(Restrictions.le("usersalary", 10000));
+  
+  
+		//Join conditions 
+		//name = 'krishna'
+		Criterion nameCondition = Restrictions.like("userName","krishna");
+
+		//salaryInfo < 5000
+		Criterion salaryCondition = Restrictions.lt("usersalary", 5000);
+		
+		//name = 'krishna' or  salaryInfo < 5000
+		LogicalExpression joinOr = Restrictions.or(salaryCondition, nameCondition);
+		empCriteria.add( joinOr );
+
+		//name = 'krishna' and  salaryInfo < 5000
+		LogicalExpression joinAnd = Restrictions.and(salaryCondition, nameCondition);
+		empCriteria.add( joinAnd );
+
+		
+  
+    //Projections : meant to include selected columns in the response
+		//get paricular column
+		empCriteria.setProjection(Projections.property("userName"));  
+  
+  			
+		// To get maximum usersalary.
+		empCriteria.setProjection(Projections.max("usersalary"));
+
+		// To get minimum usersalary
+		empCriteria.setProjection(Projections.min("usersalary"));
+
+		// To get sum of usersalary
+		empCriteria.setProjection(Projections.sum("usersalary"));
+  
+  // To get average usersalary
+		empCriteria.setProjection(Projections.avg("usersalary"));
+		
+		// To get total count
+		empCriteria.setProjection(Projections.rowCount());
+
+  // join conditions 
+		empCriteria.add(Restrictions.in("userName", 
+				Arrays.asList("krishna", "ram", "ramesh")))
+	    .add(Restrictions.lt("usersalary", 5000))
+	    .add(Restrictions.gt("usersalary", 10000))
+	    .add(Restrictions.eqOrIsNull("userName", "krishna"))
+	    .add(Restrictions.idEq("2000"));
+	    
+		
+		List<Employee> list = empCriteria.list();
+		System.out.println(list.size());
+		for (Employee e : list) {
+			System.out.println(e);
+		}
+		s.close();
+	}
 
   */
 }

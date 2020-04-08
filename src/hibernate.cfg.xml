@@ -28,10 +28,13 @@
 		<property name="hbm2ddl.auto">update</property>
 		<!-- Entity classes -->
 		
-	<mapping class="hibernateFirst.Employee" />
+	<!--<mapping class="hibernateFirst.Employee" />
 	<mapping class="hibernateFirst.Book"/>
 	<mapping class="hibernatePractice.Student"/>
-	<mapping class="hibernatePractice.Novel"/>
+	<mapping class="hibernatePractice.Novel"/> -->
+	 <mapping class="oneToOne.EmployeeWithAddress"/>
+	<mapping class="oneToOne.AddressDetails"/>
+
 
 		
 	 
