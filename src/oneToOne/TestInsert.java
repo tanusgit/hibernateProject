@@ -25,14 +25,14 @@ public class TestInsert {
 			AddressDetails add = new AddressDetails();
 			add.setCity("Hyd");
 			add.setCountry("INDIA");
-			add.setPin(123456);
+			add.setPin(123);
 			add.setState("TS1");
 			add.setStreetNo("YUSAF GUDA12");
 			
 		 	// create emp obj with data
 			EmployeeWithAddress emp = new EmployeeWithAddress();
 			emp.setAge(34);
-			emp.setName("krishna kumar12");
+			emp.setName("kritika kumari");
 
 			// keep address obj inside emp
 			emp.setCurAddress(add);

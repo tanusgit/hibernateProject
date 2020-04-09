@@ -32,8 +32,8 @@ public class EmployeeWithAddress {
 	//  parent table : EmployeeWithAddress
 	//cascade=CasecadeType.All means parent and child class would be updated automatically
 	
-	//@OneToOne(cascade=CascadeType.ALL,fetch= FetchType.LAZY) //type of relation
-	  @OneToOne(fetch= FetchType.LAZY) //type of relation
+	@OneToOne(cascade=CascadeType.ALL,fetch= FetchType.LAZY) //type of relation
+	 // @OneToOne(fetch= FetchType.LAZY) //type of relation
 	@JoinColumn(name = "curAddId")//column name
 	// use the dependet obj  as instance variable.
 	private AddressDetails curAddress;

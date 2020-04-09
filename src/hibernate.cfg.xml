@@ -32,9 +32,12 @@
 	<mapping class="hibernateFirst.Book"/>
 	<mapping class="hibernatePractice.Student"/>
 	<mapping class="hibernatePractice.Novel"/> -->
-	 <mapping class="oneToOne.EmployeeWithAddress"/>
+	<!--<mapping class="oneToOne.EmployeeWithAddress"/>
 	<mapping class="oneToOne.AddressDetails"/>
-
+	<mapping class="onetoMany.Accounts"/>
+	<mapping class="onetoMany.Customer"/>-->
+	<mapping class="manytoMany.Student"/>
+	<mapping class="manytoMany.Cource"/>
 
 		
 	 
