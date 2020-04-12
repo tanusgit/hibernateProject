@@ -310,7 +310,8 @@ public class Student extends Person{
 	<mapping class="tableperhier.Student"/> 
 	
   
-  
+  -----------------------------------------------------------
+ 
   
  */
 }

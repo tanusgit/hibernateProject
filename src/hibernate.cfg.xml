@@ -28,8 +28,8 @@
 		<property name="hbm2ddl.auto">update</property>
 		<!-- Entity classes -->
 		
-	<!--<mapping class="hibernateFirst.Employee" />
-	<mapping class="hibernateFirst.Book"/>
+	<mapping class="hibernateFirst.Employee" />
+	<!-- <mapping class="hibernateFirst.Book"/>
 	<mapping class="hibernatePractice.Student"/>
 	<mapping class="hibernatePractice.Novel"/> -->
 	<!--<mapping class="oneToOne.EmployeeWithAddress"/>
@@ -39,10 +39,16 @@
 	<mapping class="manytoMany.Student"/>
 	<mapping class="manytoMany.Cource"/>
 	 <mapping class="hasaRelation.PersonWithAddress"/>
-	<mapping class="hasaRelation.StudentWithAddress"/>-->
+	<mapping class="hasaRelation.StudentWithAddress"/>
 	<mapping class="tableperhier.Person"/> 
 	<mapping class="tableperhier.EmployeeDet"/> 
 	<mapping class="tableperhier.Student"/> 
+	<mapping class="tableperclass.Person2"/> 
+  	<mapping class="tableperclass.Student2"/> 
+  	<mapping class="tableperclass.Employee2"/> -->
+  	<mapping class="jointable.Person3"/> 
+    <mapping class="jointable.Employee3"/> 
+    <mapping class="jointable.Student3"/> 
 		
 	 
 	 </session-factory>
